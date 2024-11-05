@@ -12,13 +12,14 @@ router.post('/',async (req: Request, res: Response) => {
     console.log('city in weatherroutes: ', cityName );
     const weather = await WeatherService.getWeatherForCity(cityName);
     const history = await HistoryService.addCity(cityName); 
-    console.log('weather:',weather);
-     console.log('history:')
+   
+  
     console.log('history:',history);
     console.log(res.status)
     //console.log(res)
     //res.status(200).json({ weather });
     res.json(weather);
+  
   } catch (error) {
     console.log('error:',error);
     res.status(500).json( error);
