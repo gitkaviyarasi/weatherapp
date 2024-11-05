@@ -36,19 +36,22 @@ API Calls
 
 const fetchWeather = async (cityName: string) => {
   const response = await fetch('/api/weather/', {
+      
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ cityName }),
   });
-
+    console.log("inside fetchWeather")
   const weatherData = await response.json();
+  console.log(response)
+  console.log('weatherData in fetch weather: ', weatherData);
 
-  console.log('weatherData: ', weatherData);
-
-  renderCurrentWeather(weatherData[0]);
+  //renderCurrentWeather(weatherData[0]);
+  renderCurrentWeather(weatherData);
   renderForecast(weatherData.slice(1));
+  //renderForecast(weatherArray.slice(1));
 };
 
 const fetchSearchHistory = async () => {
@@ -77,8 +80,10 @@ Render Functions
 */
 
 const renderCurrentWeather = (currentWeather: any): void => {
+  console.log('currentWeather:', currentWeather);
   const { city, date, icon, iconDescription, tempF, windSpeed, humidity } =
-    currentWeather;
+    currentWeather[0];
+   // console.log('currentWeather after desc:', currentWeather);
 
   // convert the following to typescript
   heading.textContent = `${city} (${date})`;
