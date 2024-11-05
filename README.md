@@ -4,7 +4,7 @@ This command "npm run start:dev" will run the server and the client simultaneous
 
 Give the city name, it will provide the city name, date,temparature,wind speed, humidity and a small icon to depict the weather.Below the current date, the 5 days forcast will be displayed.
 
-API used: https://api.openweathermap.org/data/2.5/forecast?lat=40.269559&lon=-74.5232454&units=imperial&appid=8945b80e2679909e9cef88b2e1adb954
+API used: {this.baseURL}/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&units=imperial&appid=${this.apiKey}`;
 
 The latitude and longitude are fetched by uing the Geocode query
 {this.baseURL}/geo/1.0/direct?q=${city}&limit=1&appid=${this.apiKey}
